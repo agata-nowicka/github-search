@@ -5,34 +5,46 @@ import Results from './Results';
 const SearchBar = () => {
 
     const [searchInput, setSearchInput] = useState('');
-    const [repo, setRepo] = useState([]);
+    const [repos, setRepos] = useState([]);
 
-    const handleChange = (e) => {
-        setSearchInput(e.target.value);
-    };
+    const handleChange = e => 
+        setSearchInput(e.target.value);  
 
-    const handleOnClick = async () => {
-        //console.log(searchInput);
+    const handleSearch = async () => {        
         try {
             const result = await axios(`https://api.github.com/users/${searchInput}/repos`)
-            setRepo(result);
-        } catch (error) {
-            console.log(error)
+            setRepos(result);
+        }   catch (error) {
+            console.log(error);
         }
+    };
+
+    const handleKeypress = e => {
+        if (e.key === 'Enter') {
+           handleSearch(); 
+        }
+    };
+
+    const handleClear = () => {
+        setSearchInput('');
+        setRepos([]);
     };
        
     return (
         <>
-        <div>
-            <input type="text"
-                placeholder="Type user name"
-                value={searchInput} onChange={handleChange} />
-            <button onClick={handleOnClick} >Search</button>
-        </div>
-            <Results repos={repo} />
+            <div>               
+                <input
+                    type="text"
+                    placeholder="Type user name"
+                    value={searchInput}
+                    onChange={handleChange}
+                    onKeyPress={handleKeypress}/>
+                <button  onClick={handleSearch} >Search</button>
+                <button onClick={handleClear} >Clear</button>                
+            </div>
+        <Results repos={repos} />
         </>
-        ); 
-   
+        );    
 }
 
 export default SearchBar;
