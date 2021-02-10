@@ -9,8 +9,8 @@ const Results = (props) => {
   const listRepos =
     repos.length !== 0 ? (
       repos.data.map((item) => (
-        <Link to={{ pathname: `/repo/${item.id}` }}>
-          <li key={item.id}> {item.name} </li>
+        <Link to={{ pathname: `/repo/${item.full_name}` }} key={item.id}>
+          <li>{item.name} </li>
         </Link>
       ))
     ) : (

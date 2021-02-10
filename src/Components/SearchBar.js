@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 
 import Results from './Results';
 
@@ -40,7 +41,13 @@ const SearchBar = () => {
           onKeyPress={handleKeypress}
         />
         <button onClick={handleSearch}>Search</button>
-        <button onClick={handleClear}>Clear</button>
+        <Link
+          to={{
+            pathname: '/',
+          }}
+        >
+          <button onClick={handleClear}>Clear</button>
+        </Link>
       </div>
       <Results repos={repos} />
     </>

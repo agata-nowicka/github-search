@@ -1,14 +1,12 @@
 import React from 'react';
-import { BrowserRouter, Switch, Route } from 'react-router-dom';
+import { BrowserRouter, Route } from 'react-router-dom';
 import App from '../App';
 import Repo from './Repo';
 
 const Router = () => (
   <BrowserRouter>
-    <Switch>
-      <Route path="/" component={App} exact />
-      <Route path="/repo/:id" component={Repo} />
-    </Switch>
+    <Route path="/" component={App} />
+    <Route path="/repo/:author/:name" component={Repo} />
   </BrowserRouter>
 );
 export default Router;
