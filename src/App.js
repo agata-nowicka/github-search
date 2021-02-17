@@ -6,16 +6,14 @@ import Repo from './Components/Repo';
 import { PATHS } from './config/routes';
 
 function App() {
-  <BrowserRouter>
-    <Switch>
-      <Route path="{PATHS.HOME}" exact component={Home} />
-      <Route path="{PATHS.REPO}" component={Repo} />
-    </Switch>
-  </BrowserRouter>;
-
   return (
     <div className="App">
-      <Home />
+      <BrowserRouter>
+        <Switch>
+          <Route exact path={PATHS.HOME} component={Home} />
+          <Route path={PATHS.REPO} component={Repo} />
+        </Switch>
+      </BrowserRouter>
     </div>
   );
 }
