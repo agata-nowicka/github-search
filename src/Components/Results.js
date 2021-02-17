@@ -1,7 +1,7 @@
 /* eslint-disable react/jsx-key */
 /* eslint react/prop-types: 0 */
 import React from 'react';
-import { BrowserRouter, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 const Results = (props) => {
   const { repos } = props;
@@ -9,11 +9,9 @@ const Results = (props) => {
   const listRepos =
     repos.length !== 0 ? (
       repos.data.map((item) => (
-        <BrowserRouter>
-          <Link to={{ pathname: `/repo/${item.full_name}` }} key={item.id}>
-            <li>{item.name} </li>
-          </Link>
-        </BrowserRouter>
+        <Link to={{ pathname: `/repo/${item.full_name}` }} key={item.id}>
+          <li>{item.name} </li>
+        </Link>
       ))
     ) : (
       <div> No repos </div>
