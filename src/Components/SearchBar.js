@@ -1,10 +1,15 @@
+/* eslint-disable react/jsx-no-undef */
 import React, { useState } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
-
 import Results from './Results';
+import Button from '@material-ui/core/Button';
+import TextField from '@material-ui/core/TextField';
+import GitHubIcon from '@material-ui/icons/GitHub';
+import SearchIcon from '@material-ui/icons/Search';
+import { InputAdornment } from '@material-ui/core';
 
-const SearchBar = () => {
+function SearchBar() {
   const [searchInput, setSearchInput] = useState('');
   const [repos, setRepos] = useState([]);
 
@@ -33,25 +38,41 @@ const SearchBar = () => {
   return (
     <>
       <div>
-        <input
-          type="text"
-          placeholder="Type user name"
-          value={searchInput}
-          onChange={handleChange}
-          onKeyPress={handleKeypress}
-        />
-        <button onClick={handleSearch}>Search</button>
+        <GitHubIcon />
+        <form noValidate autoComplete="off">
+          <TextField
+            id="outlined-basic"
+            label="User name"
+            variant="outlined"
+            type="text"
+            value={searchInput}
+            onChange={handleChange}
+            onKeyPress={handleKeypress} /*Not working now */
+            InputProps={{
+              endAdornment: (
+                <InputAdornment position="end">
+                  <SearchIcon />
+                </InputAdornment>
+              ),
+            }}
+          />
+        </form>
+        <Button variant="contained" color="primary" onClick={handleSearch}>
+          Search
+        </Button>
         <Link
           to={{
             pathname: '/',
           }}
         >
-          <button onClick={handleClear}>Clear</button>
+          <Button variant="contained" onClick={handleClear}>
+            Clear
+          </Button>
         </Link>
       </div>
-      <Results repos={repos} />
+      <Results repos={repos} user={searchInput} />
     </>
   );
-};
+}
 
 export default SearchBar;
