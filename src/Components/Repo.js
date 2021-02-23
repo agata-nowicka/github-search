@@ -35,8 +35,7 @@ const Repo = () => {
     }
   }, []);
 
-  {
-    /*const useStyles = makeStyles((theme) => ({
+ const useStyles = makeStyles((theme) => ({
     root: {
       maxWidth: 345,
     },
@@ -66,8 +65,7 @@ const Repo = () => {
     const handleExpandClick = () => {
       setExpanded(!expanded);
     };
-  */
-  }
+  
 
   return (
     <Card className={classes.root}>
