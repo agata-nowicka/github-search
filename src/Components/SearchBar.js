@@ -15,18 +15,13 @@ function SearchBar() {
 
   const handleChange = (e) => setSearchInput(e.target.value);
 
-  const handleSearch = async () => {
+  const handleSearch = async (e) => {
+    e.preventDefault();
     try {
       const result = await axios(`https://api.github.com/users/${searchInput}/repos`);
       setRepos(result);
     } catch (error) {
       console.log(error);
-    }
-  };
-
-  const handleKeypress = (e) => {
-    if (e.key === 'Enter') {
-      handleSearch();
     }
   };
 
@@ -39,7 +34,7 @@ function SearchBar() {
     <>
       <div>
         <GitHubIcon />
-        <form noValidate autoComplete="off">
+        <form noValidate autoComplete="off" onSubmit={handleSearch}>
           <TextField
             id="outlined-basic"
             label="User name"
@@ -47,7 +42,6 @@ function SearchBar() {
             type="text"
             value={searchInput}
             onChange={handleChange}
-            onKeyPress={handleKeypress} /*Not working now */
             InputProps={{
               endAdornment: (
                 <InputAdornment position="end">
@@ -56,19 +50,19 @@ function SearchBar() {
               ),
             }}
           />
-        </form>
-        <Button variant="contained" color="primary" onClick={handleSearch}>
-          Search
-        </Button>
-        <Link
-          to={{
-            pathname: '/',
-          }}
-        >
-          <Button variant="contained" onClick={handleClear}>
-            Clear
+          <Button variant="contained" color="secondary" onClick={handleSearch} type="submit">
+            Search
           </Button>
-        </Link>
+          <Link
+            to={{
+              pathname: '/',
+            }}
+          >
+            <Button variant="contained" onClick={handleClear}>
+              Clear
+            </Button>
+          </Link>
+        </form>
       </div>
       <Results repos={repos} user={searchInput} />
     </>

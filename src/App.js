@@ -4,17 +4,19 @@ import './App.css';
 import Home from './Components/Home';
 import Repo from './Components/Repo';
 import { PATHS } from './config/routes';
+import { ThemeProvider } from '@material-ui/core/styles';
+import theme from './styles/theme';
 
 function App() {
   return (
-    <div className="App">
+    <ThemeProvider theme={theme}>
       <BrowserRouter>
         <Switch>
           <Route exact path={PATHS.HOME} component={Home} />
           <Route path={PATHS.REPO} component={Repo} />
         </Switch>
       </BrowserRouter>
-    </div>
+    </ThemeProvider>
   );
 }
 
