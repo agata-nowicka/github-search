@@ -1,8 +1,9 @@
 /* eslint-disable react/jsx-no-undef */
 /* eslint-disable react/jsx-key */
 /* eslint react/prop-types: 0 */
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import axios from 'axios';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
@@ -12,9 +13,18 @@ import BookIcon from '@material-ui/icons/Book';
 
 const Results = (props) => {
   const { repos, user } = props;
-  {
-    /* const [avatar, setAvatar] = useState([]); */
-  }
+  const [avatar, setAvatar] = useState('');
+
+  useEffect(async () => {
+    if (user) {
+      try {
+        const userData = await axios(`https://api.github.com/users/${user}`);
+        setAvatar(userData.data.avatar_url);
+      } catch (error) {
+        console.log(error);
+      }
+    }
+  }, [user]);
 
   const listRepos =
     repos.length !== 0 ? (
@@ -34,21 +44,9 @@ const Results = (props) => {
       <div> No repos </div>
     );
 
-  {
-    /*
-   useEffect(async () => {
-    try {
-      const result2 = await axios(`https://api.github.com/users/${user}`);
-      setAvatar(result2.data.avatar_url);
-    } catch (error) {
-      console.log(error);
-    }
-  }, []);*/
-  }
-
   return (
     <div>
-      {/* <img src={avatar} /> */}
+      <img src={avatar} />
 
       <h2> {listRepos} </h2>
     </div>

@@ -12,14 +12,20 @@ import { InputAdornment } from '@material-ui/core';
 function SearchBar() {
   const [searchInput, setSearchInput] = useState('');
   const [repos, setRepos] = useState([]);
+  const [searchedUser, setSearchedUser] = useState(null);
 
-  const handleChange = (e) => setSearchInput(e.target.value);
+  const handleChange = (e) => {
+    setSearchInput(e.target.value);
+  };
 
   const handleSearch = async (e) => {
     e.preventDefault();
     try {
       const result = await axios(`https://api.github.com/users/${searchInput}/repos`);
       setRepos(result);
+      setSearchedUser(searchInput);
+      console.log(searchInput);
+      console.log(searchedUser);
     } catch (error) {
       console.log(error);
     }
@@ -64,7 +70,7 @@ function SearchBar() {
           </Link>
         </form>
       </div>
-      <Results repos={repos} user={searchInput} />
+      <Results repos={repos} user={searchedUser} />
     </>
   );
 }
