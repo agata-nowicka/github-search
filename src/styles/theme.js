@@ -3,14 +3,17 @@ import { createMuiTheme } from '@material-ui/core/styles';
 const theme = createMuiTheme({
   palette: {
     background: {
-      default: '#24292E',
+      default: '#222222',
     },
 
     primary: {
-      main: '#C0C8D1',
+      main: '#CFCFCF',
     },
     secondary: {
-      main: '#1E444F',
+      main: '#7E7E7E',
+    },
+    textPrimary: {
+      main: '#FAFAFA',
     },
   },
 });

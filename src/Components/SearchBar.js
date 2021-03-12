@@ -27,11 +27,10 @@ const useStyles = makeStyles((theme) => ({
   },
   avatar: {
     margin: theme.spacing(1),
-    backgroundColor: theme.palette.secondary.main,
   },
   form: {
-    width: '100%', // Fix IE 11 issue.
     marginTop: theme.spacing(3),
+    width: '100%',
   },
   submit: {
     margin: theme.spacing(3, 0, 2),
@@ -71,11 +70,11 @@ function SearchBar() {
     <Container component="main" maxWidth="xs">
       <CssBaseline />
       <div className={classes.paper}>
-        <Avatar className={classes.avatar}>
+        <Avatar>
           <GitHubIcon />
         </Avatar>
-        <Typography component="h1" variant="h5">
-          Search for a GitHub user
+        <Typography component="h1" variant="h5" color="secondary">
+          Find a Github user
         </Typography>
         <form noValidate autoComplete="off" onSubmit={handleSearch}>
           <Grid container spacing={2}>
@@ -102,7 +101,7 @@ function SearchBar() {
           <div className={classes.heroButtons}>
             <Grid container spacing={2} justify="center">
               <Grid item>
-                <Button variant="outlined" color="secondary" onClick={handleSearch} type="submit">
+                <Button variant="contained" color="primary" onClick={handleSearch} type="submit">
                   Search
                 </Button>
               </Grid>
@@ -112,7 +111,7 @@ function SearchBar() {
                     pathname: '/',
                   }}
                 >
-                  <Button variant="contained" onClick={handleClear}>
+                  <Button variant="outlined" color="secondary" onClick={handleClear}>
                     Clear
                   </Button>
                 </Link>
@@ -121,7 +120,6 @@ function SearchBar() {
           </div>
         </form>
       </div>
-
       <Results repos={repos} user={searchedUser} />
     </Container>
   );

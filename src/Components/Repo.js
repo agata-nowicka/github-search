@@ -11,7 +11,6 @@ import Avatar from '@material-ui/core/Avatar';
 import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
 import FavoriteIcon from '@material-ui/icons/Favorite';
-import ShareIcon from '@material-ui/icons/Share';
 import Container from '@material-ui/core/Container';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Button from '@material-ui/core/Button';
@@ -40,11 +39,11 @@ const useStyles = makeStyles((theme) => ({
   },
   button: {
     marginTop: theme.spacing(6),
-
     backgroundColor: theme.palette.primary.main,
   },
   center: {
     display: 'flex',
+    flexDirection: 'column',
     alignItems: 'center',
     justifyContent: 'center',
   },
@@ -54,6 +53,7 @@ const Repo = () => {
   const { author, name } = useParams();
   const [languages, setLanguages] = useState([]);
   const [avatar, setAvatar] = useState([]);
+  const [repoUrl, setRepoUrl] = useState([]);
   const classes = useStyles();
 
   useEffect(async () => {
@@ -62,6 +62,7 @@ const Repo = () => {
       setLanguages(Object.keys(res.data));
       const result2 = await axios(`https://api.github.com/users/${author}`);
       setAvatar(result2.data.avatar_url);
+      setRepoUrl(`https://github.com/${author}/${name}`);
     } catch (error) {
       console.log(error);
     }
@@ -79,13 +80,16 @@ const Repo = () => {
                   {author[0]}
                 </Avatar>
               }
-              title={name}
-              subheader="Lorem ipsum"
+              title={
+                <a target="blank" href={repoUrl}>
+                  {name}
+                </a>
+              }
             />
 
             <Typography variant="body2" color="textSecondary" component="p">
-              Choosen repo is {name}. The author is {author}
-              <br />
+              Choosen repo is {name}. <br />
+              The author is {author} <br />
               Used languages are: {languages.join(', ')}
             </Typography>
           </CardContent>
@@ -93,22 +97,21 @@ const Repo = () => {
             <IconButton aria-label="add to favorites">
               <FavoriteIcon />
             </IconButton>
-            <IconButton aria-label="share">
-              <ShareIcon />
-            </IconButton>
           </CardActions>
         </div>
         <CardMedia className={classes.media} image={avatar} title="avatar" />
       </Card>
-      <Link
-        to={{
-          pathname: '/',
-        }}
-      >
-        <Button variant="contained" className={classes.button}>
-          Back
-        </Button>
-      </Link>
+      <div className={classes.root}>
+        <Link
+          to={{
+            pathname: '/',
+          }}
+        >
+          <Button variant="contained" className={classes.button}>
+            Back
+          </Button>
+        </Link>
+      </div>
     </Container>
   );
 };

@@ -8,7 +8,6 @@ import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
-
 import BookIcon from '@material-ui/icons/Book';
 
 const Results = (props) => {
@@ -46,7 +45,7 @@ const Results = (props) => {
 
   return (
     <div>
-      <img src={avatar} />
+      {/*  <img src={avatar} />*/}
 
       <h2> {listRepos} </h2>
     </div>
