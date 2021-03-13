@@ -12,9 +12,10 @@ const theme = createMuiTheme({
     secondary: {
       main: '#7E7E7E',
     },
-    textPrimary: {
-      main: '#FAFAFA',
-    },
+  },
+  text: {
+    primary: '#FAFAFA',
+    secondary: '#222222',
   },
 });
 export default theme;

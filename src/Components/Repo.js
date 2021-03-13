@@ -36,6 +36,8 @@ const useStyles = makeStyles((theme) => ({
   },
   avatar: {
     backgroundColor: theme.palette.primary.main,
+    width: theme.spacing(6),
+    height: theme.spacing(6),
   },
   button: {
     marginTop: theme.spacing(6),
@@ -46,6 +48,10 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: 'column',
     alignItems: 'center',
     justifyContent: 'center',
+  },
+  customLink: {
+    color: theme.text.secondary,
+    fontSize: '1.5rem',
   },
 }));
 
@@ -76,28 +82,23 @@ const Repo = () => {
           <CardContent className={classes.content}>
             <CardHeader
               avatar={
-                <Avatar aria-label="recipe" className={classes.avatar}>
+                <Avatar aria-label="first letter" className={classes.avatar}>
                   {author[0]}
                 </Avatar>
               }
               title={
-                <a target="blank" href={repoUrl}>
+                <a target="blank" href={repoUrl} className={classes.customLink}>
                   {name}
                 </a>
               }
             />
 
-            <Typography variant="body2" color="textSecondary" component="p">
+            <Typography variant="body1" color="textSecondary" component="p">
               Choosen repo is {name}. <br />
               The author is {author} <br />
               Used languages are: {languages.join(', ')}
             </Typography>
           </CardContent>
-          <CardActions disableSpacing>
-            <IconButton aria-label="add to favorites">
-              <FavoriteIcon />
-            </IconButton>
-          </CardActions>
         </div>
         <CardMedia className={classes.media} image={avatar} title="avatar" />
       </Card>
