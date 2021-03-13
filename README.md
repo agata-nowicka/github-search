@@ -4,6 +4,8 @@ The project is still in progress
 
 An app which allows you to find a GitHub user.
 
+![Website screenshot](./src/screen.PNG)
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Table of Contents
