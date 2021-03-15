@@ -45,9 +45,8 @@ function SearchBar() {
     e.preventDefault();
     try {
       const result = await axios(`https://api.github.com/users/${searchInput}/repos`);
-      setRepos(result);
+      setRepos(result.data);
       setSearchedUser(searchInput);
-      console.log(result.data.length);
     } catch (error) {
       console.log(error);
       setRepos([]);

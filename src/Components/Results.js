@@ -29,7 +29,36 @@ const useStyles = makeStyles((theme) => ({
 const Results = (props) => {
   const { repos, user } = props;
   const classes = useStyles();
-  const listRepos =
+  let listRepos = [];
+
+  if (repos.length !== 0) {
+    listRepos = repos.map((item) => (
+      <Link
+        className={classes.customLink}
+        to={{ pathname: `/repo/${item.full_name}` }}
+        key={item.id}
+      >
+        <div className={classes.root}>
+          <List component="nav" aria-label="list of repos">
+            <ListItem button>
+              <ListItemIcon>
+                <GitHubIcon />
+              </ListItemIcon>
+              <ListItemText primary={item.name} />
+            </ListItem>
+          </List>
+        </div>
+      </Link>
+    ));
+  } else if (!user) {
+    listRepos = <div> </div>;
+  } else if (user === 'errorerror') {
+    listRepos = <div> No such user </div>;
+  } else {
+    listRepos = <div> No repos </div>;
+  }
+  {
+    /*const listRepos =
     repos.length !== 0 ? (
       repos.data.map((item) => (
         <Link
@@ -55,7 +84,8 @@ const Results = (props) => {
       <div> No such user </div>
     ) : (
       <div> No repos </div>
-    );
+    ); */
+  }
 
   return (
     <Grid container direction="column" alignItems="center" justify="center">
