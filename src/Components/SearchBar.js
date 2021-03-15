@@ -47,6 +47,7 @@ function SearchBar() {
       const result = await axios(`https://api.github.com/users/${searchInput}/repos`);
       setRepos(result);
       setSearchedUser(searchInput);
+      console.log(result.data.length);
     } catch (error) {
       console.log(error);
       setRepos([]);
@@ -71,6 +72,7 @@ function SearchBar() {
                 id="outlined-basic"
                 label="GitHub user name"
                 variant="outlined"
+                color="primary"
                 fullWidth
                 type="text"
                 value={searchInput}

@@ -29,7 +29,6 @@ const useStyles = makeStyles((theme) => ({
 const Results = (props) => {
   const { repos, user } = props;
   const classes = useStyles();
-
   const listRepos =
     repos.length !== 0 ? (
       repos.data.map((item) => (

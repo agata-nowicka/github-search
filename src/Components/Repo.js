@@ -6,11 +6,8 @@ import Card from '@material-ui/core/Card';
 import CardHeader from '@material-ui/core/CardHeader';
 import CardMedia from '@material-ui/core/CardMedia';
 import CardContent from '@material-ui/core/CardContent';
-import CardActions from '@material-ui/core/CardActions';
 import Avatar from '@material-ui/core/Avatar';
-import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
-import FavoriteIcon from '@material-ui/icons/Favorite';
 import Container from '@material-ui/core/Container';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Button from '@material-ui/core/Button';
@@ -64,10 +61,10 @@ const Repo = () => {
 
   useEffect(async () => {
     try {
-      const res = await axios(`https://api.github.com/repos/${author}/${name}/languages`);
-      setLanguages(Object.keys(res.data));
-      const result2 = await axios(`https://api.github.com/users/${author}`);
-      setAvatar(result2.data.avatar_url);
+      const resultLang = await axios(`https://api.github.com/repos/${author}/${name}/languages`);
+      setLanguages(Object.keys(resultLang.data));
+      const resultAuth = await axios(`https://api.github.com/users/${author}`);
+      setAvatar(resultAuth.data.avatar_url);
       setRepoUrl(`https://github.com/${author}/${name}`);
     } catch (error) {
       console.log(error);
