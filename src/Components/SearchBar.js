@@ -15,6 +15,7 @@ import Container from '@material-ui/core/Container';
 const useStyles = makeStyles((theme) => ({
   heroButtons: {
     marginTop: theme.spacing(4),
+    textDecoration: 'none',
   },
   paper: {
     marginTop: theme.spacing(8),
@@ -79,7 +80,7 @@ function SearchBar() {
                 InputProps={{
                   endAdornment: (
                     <InputAdornment position="end">
-                      <SearchIcon />
+                      <SearchIcon color="primary" />
                     </InputAdornment>
                   ),
                 }}
@@ -90,7 +91,7 @@ function SearchBar() {
           <div className={classes.heroButtons}>
             <Grid container spacing={2} justify="center">
               <Grid item>
-                <Button variant="contained" color="primary" onClick={handleSearch} type="submit">
+                <Button variant="contained" onClick={handleSearch} type="submit">
                   Search
                 </Button>
               </Grid>
@@ -99,8 +100,9 @@ function SearchBar() {
                   to={{
                     pathname: '/',
                   }}
+                  className={classes.heroButtons}
                 >
-                  <Button variant="outlined" color="secondary" onClick={handleClear}>
+                  <Button variant="outlined" onClick={handleClear}>
                     Clear
                   </Button>
                 </Link>

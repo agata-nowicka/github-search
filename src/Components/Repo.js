@@ -20,6 +20,7 @@ const useStyles = makeStyles((theme) => ({
     margin: 'auto',
     transition: '0.3s',
     boxShadow: '0 8px 40px -12px rgba(0,0,0,0.3)',
+    background: 'rgba(255, 255, 255, 0.7)',
   },
   details: {
     display: 'flex',
@@ -29,16 +30,14 @@ const useStyles = makeStyles((theme) => ({
     flex: '1 0 auto',
   },
   media: {
-    width: 200,
+    width: 170,
   },
   avatar: {
-    backgroundColor: theme.palette.primary.main,
     width: theme.spacing(6),
     height: theme.spacing(6),
   },
   button: {
     marginTop: theme.spacing(6),
-    backgroundColor: theme.palette.primary.main,
   },
   center: {
     display: 'flex',
@@ -47,8 +46,9 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: 'center',
   },
   customLink: {
-    color: theme.text.secondary,
     fontSize: '1.5rem',
+    textDecoration: 'none',
+    color: 'palette.background.default',
   },
 }));
 
@@ -91,7 +91,6 @@ const Repo = () => {
             />
 
             <Typography variant="body1" color="textSecondary" component="p">
-              Choosen repo is {name}. <br />
               The author is {author} <br />
               Used languages are: {languages.join(', ')}
             </Typography>
@@ -99,7 +98,7 @@ const Repo = () => {
         </div>
         <CardMedia className={classes.media} image={avatar} title="avatar" />
       </Card>
-      <div className={classes.root}>
+      <div>
         <Link
           to={{
             pathname: '/',

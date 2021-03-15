@@ -18,11 +18,8 @@ const useStyles = makeStyles((theme) => ({
   },
 
   customLink: {
-    color: theme.palette.primary.main,
+    color: theme.palette.text.primary,
     textDecoration: 'none',
-    '&:hover': {
-      /* can't force to change on hover*/ backgroundColor: '#FFFFFF !important',
-    },
   },
 }));
 
@@ -41,7 +38,7 @@ const Results = (props) => {
         <div className={classes.root}>
           <List component="nav" aria-label="list of repos">
             <ListItem button>
-              <ListItemIcon>
+              <ListItemIcon className={classes.customLink}>
                 <GitHubIcon />
               </ListItemIcon>
               <ListItemText primary={item.name} />
