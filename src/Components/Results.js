@@ -18,7 +18,7 @@ const useStyles = makeStyles((theme) => ({
   },
 
   customLink: {
-    color: theme.palette.text.primary,
+    color: theme.palette.text.main,
     textDecoration: 'none',
   },
 }));
@@ -53,35 +53,6 @@ const Results = (props) => {
     listRepos = <div> No such user </div>;
   } else {
     listRepos = <div> No repos </div>;
-  }
-  {
-    /*const listRepos =
-    repos.length !== 0 ? (
-      repos.data.map((item) => (
-        <Link
-          className={classes.customLink}
-          to={{ pathname: `/repo/${item.full_name}` }}
-          key={item.id}
-        >
-          <div className={classes.root}>
-            <List component="nav" aria-label="list of repos">
-              <ListItem button>
-                <ListItemIcon>
-                  <GitHubIcon />
-                </ListItemIcon>
-                <ListItemText primary={item.name} />
-              </ListItem>
-            </List>
-          </div>
-        </Link>
-      ))
-    ) : !user ? (
-      <div> </div>
-    ) : user === 'errorerror' ? (
-      <div> No such user </div>
-    ) : (
-      <div> No repos </div>
-    ); */
   }
 
   return (

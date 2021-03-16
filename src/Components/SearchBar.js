@@ -15,6 +15,23 @@ import Container from '@material-ui/core/Container';
 const useStyles = makeStyles((theme) => ({
   heroButtons: {
     marginTop: theme.spacing(4),
+  },
+  clear: {
+    '&:hover': {
+      backgroundColor: theme.palette.buttons.action.hover,
+      boxShadow: 'none',
+    },
+  },
+  blue: {
+    backgroundColor: theme.palette.buttons.action.selected,
+    borderColor: theme.palette.buttons.action.selected,
+    '&:hover': {
+      backgroundColor: '#5095b5',
+      borderColor: '#5095b5',
+      boxShadow: 'none',
+    },
+  },
+  customLink: {
     textDecoration: 'none',
   },
   paper: {
@@ -72,7 +89,7 @@ function SearchBar() {
                 id="outlined-basic"
                 label="GitHub user name"
                 variant="outlined"
-                color="primary"
+                color="main"
                 fullWidth
                 type="text"
                 value={searchInput}
@@ -80,7 +97,7 @@ function SearchBar() {
                 InputProps={{
                   endAdornment: (
                     <InputAdornment position="end">
-                      <SearchIcon color="primary" />
+                      <SearchIcon color="main" />
                     </InputAdornment>
                   ),
                 }}
@@ -91,7 +108,12 @@ function SearchBar() {
           <div className={classes.heroButtons}>
             <Grid container spacing={2} justify="center">
               <Grid item>
-                <Button variant="contained" onClick={handleSearch} type="submit">
+                <Button
+                  variant="contained"
+                  onClick={handleSearch}
+                  type="submit"
+                  className={classes.blue}
+                >
                   Search
                 </Button>
               </Grid>
@@ -100,9 +122,9 @@ function SearchBar() {
                   to={{
                     pathname: '/',
                   }}
-                  className={classes.heroButtons}
+                  className={classes.customLink}
                 >
-                  <Button variant="outlined" onClick={handleClear}>
+                  <Button variant="contained" onClick={handleClear} className={classes.clear}>
                     Clear
                   </Button>
                 </Link>
