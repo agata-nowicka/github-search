@@ -47,6 +47,28 @@ const useStyles = makeStyles((theme) => ({
   submit: {
     margin: theme.spacing(3, 0, 2),
   },
+  root: {
+    //backgroundColor: '#424242',
+    color: theme.palette.buttons.action.selected,
+
+    '& label.Mui-focused': {
+      color: theme.palette.buttons.action.hover,
+    },
+    '& .MuiInput-underline:after': {
+      borderBottomColor: theme.palette.buttons.action.hover,
+    },
+    '& .MuiOutlinedInput-root': {
+      // '& fieldset': {
+      // borderColor: 'red',
+      // },
+      '&:hover fieldset': {
+        borderColor: theme.palette.buttons.action.selected,
+      },
+      '&.Mui-focused fieldset': {
+        borderColor: theme.palette.buttons.action.hover,
+      },
+    },
+  },
 }));
 
 function SearchBar() {
@@ -86,10 +108,10 @@ function SearchBar() {
           <Grid container spacing={2}>
             <Grid item xs={12}>
               <TextField
+                className={classes.root}
                 id="outlined-basic"
                 label="GitHub user name"
                 variant="outlined"
-                color="main"
                 fullWidth
                 type="text"
                 value={searchInput}

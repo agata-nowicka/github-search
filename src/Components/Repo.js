@@ -38,6 +38,10 @@ const useStyles = makeStyles((theme) => ({
   },
   button: {
     marginTop: theme.spacing(6),
+    '&:hover': {
+      backgroundColor: theme.palette.buttons.action.hover,
+      boxShadow: 'none',
+    },
   },
   center: {
     display: 'flex',
@@ -47,8 +51,10 @@ const useStyles = makeStyles((theme) => ({
   },
   customLink: {
     fontSize: '1.5rem',
+    color: theme.palette.background.default,
+  },
+  noLink: {
     textDecoration: 'none',
-    color: 'palette.background.default',
   },
 }));
 
@@ -103,6 +109,7 @@ const Repo = () => {
           to={{
             pathname: '/',
           }}
+          className={classes.noLink}
         >
           <Button variant="contained" className={classes.button}>
             Back
