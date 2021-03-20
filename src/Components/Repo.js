@@ -16,7 +16,7 @@ const useStyles = makeStyles((theme) => ({
   root: {
     marginTop: theme.spacing(8),
     display: 'flex',
-    maxWidth: '80%',
+    width: '700px',
     margin: 'auto',
     transition: '0.3s',
     boxShadow: '0 8px 40px -12px rgba(0,0,0,0.3)',
@@ -29,6 +29,7 @@ const useStyles = makeStyles((theme) => ({
   content: {
     flex: '1 0 auto',
   },
+
   media: {
     width: 170,
   },

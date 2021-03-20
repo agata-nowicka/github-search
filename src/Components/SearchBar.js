@@ -48,7 +48,8 @@ const useStyles = makeStyles((theme) => ({
     margin: theme.spacing(3, 0, 2),
   },
   root: {
-    //backgroundColor: '#424242',
+    width: '300px',
+    backgroundColor: '#424242',
     color: theme.palette.buttons.action.selected,
 
     '& label.Mui-focused': {
@@ -112,7 +113,7 @@ function SearchBar() {
                 id="outlined-basic"
                 label="GitHub user name"
                 variant="outlined"
-                fullWidth
+                fullWidth="true"
                 type="text"
                 value={searchInput}
                 onChange={handleChange}
