@@ -3,14 +3,16 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import Results from './Results';
-import Button from '@material-ui/core/Button';
-import CssBaseline from '@material-ui/core/CssBaseline';
-import TextField from '@material-ui/core/TextField';
 import SearchIcon from '@material-ui/icons/Search';
-import { InputAdornment } from '@material-ui/core';
-import Grid from '@material-ui/core/Grid';
-import { makeStyles } from '@material-ui/core/styles';
-import Container from '@material-ui/core/Container';
+import {
+  InputAdornment,
+  Button,
+  CssBaseline,
+  TextField,
+  Grid,
+  makeStyles,
+  Container,
+} from '@material-ui/core';
 
 const useStyles = makeStyles((theme) => ({
   heroButtons: {

@@ -1,22 +1,24 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useParams, Link } from 'react-router-dom';
-import { makeStyles } from '@material-ui/core/styles';
-import Card from '@material-ui/core/Card';
-import CardHeader from '@material-ui/core/CardHeader';
-import CardMedia from '@material-ui/core/CardMedia';
-import CardContent from '@material-ui/core/CardContent';
-import Avatar from '@material-ui/core/Avatar';
-import Typography from '@material-ui/core/Typography';
-import Container from '@material-ui/core/Container';
-import CssBaseline from '@material-ui/core/CssBaseline';
-import Button from '@material-ui/core/Button';
+import {
+  Card,
+  CardHeader,
+  CardMedia,
+  CardContent,
+  Avatar,
+  Typography,
+  Container,
+  CssBaseline,
+  Button,
+  makeStyles,
+  Box,
+} from '@material-ui/core';
 
 const useStyles = makeStyles((theme) => ({
   root: {
     marginTop: theme.spacing(8),
     display: 'flex',
-    width: '700px',
     margin: 'auto',
     transition: '0.3s',
     boxShadow: '0 8px 40px -12px rgba(0,0,0,0.3)',
@@ -96,10 +98,17 @@ const Repo = () => {
                 </a>
               }
             />
-
             <Typography variant="body1" color="textSecondary" component="p">
-              The author is {author} <br />
-              Used languages are: {languages.join(', ')}
+              The
+              <Box fontWeight="fontWeightBold" m={1} display="inline">
+                author
+              </Box>
+              is {author} <br />
+              Used
+              <Box fontWeight="fontWeightBold" m={1} display="inline">
+                languages
+              </Box>
+              are: {languages.join(', ')}
             </Typography>
           </CardContent>
         </div>

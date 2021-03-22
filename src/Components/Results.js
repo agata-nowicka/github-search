@@ -2,14 +2,19 @@
 /* eslint-disable react/jsx-key */
 /* eslint react/prop-types: 0 */
 import React from 'react';
+import imageUrl from './no-messages.png';
+import imageUrlStart from '../img/cherry-online-service.png';
 import { Link } from 'react-router-dom';
-import List from '@material-ui/core/List';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemIcon from '@material-ui/core/ListItemIcon';
-import ListItemText from '@material-ui/core/ListItemText';
 import GitHubIcon from '@material-ui/icons/GitHub';
-import { makeStyles } from '@material-ui/core/styles';
-import { Grid } from '@material-ui/core';
+import {
+  makeStyles,
+  List,
+  ListItem,
+  ListItemIcon,
+  ListItemText,
+  Grid,
+  CardMedia,
+} from '@material-ui/core';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -20,6 +25,16 @@ const useStyles = makeStyles((theme) => ({
   customLink: {
     color: theme.palette.text.main,
     textDecoration: 'none',
+  },
+  media: {
+    marginTop: theme.spacing(6),
+    width: '150px',
+    height: '180px',
+  },
+  mediaStart: {
+    marginTop: theme.spacing(6),
+    width: '180px',
+    height: '150px',
   },
 }));
 
@@ -48,11 +63,29 @@ const Results = (props) => {
       </Link>
     ));
   } else if (!user) {
-    listRepos = <div> </div>;
+    listRepos = (
+      <div className={classes.mediaStart}>
+        <CardMedia className={classes.mediaStart} image={imageUrlStart} />
+      </div>
+    );
   } else if (user === 'errorerror') {
-    listRepos = <div> No such user </div>;
+    listRepos = (
+      <div>
+        No such user
+        <div className={classes.media}>
+          <CardMedia className={classes.media} image={imageUrl} />
+        </div>
+      </div>
+    );
   } else {
-    listRepos = <div> No repos </div>;
+    listRepos = (
+      <div>
+        No repos
+        <div className={classes.media}>
+          <CardMedia className={classes.media} image={imageUrl} />
+        </div>
+      </div>
+    );
   }
 
   return (

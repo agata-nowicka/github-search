@@ -1,6 +1,18 @@
 import { createMuiTheme } from '@material-ui/core/styles';
 
 const theme = createMuiTheme({
+  overrides: {
+    MuiInputLabel: {
+      root: {
+        color: 'rgba(255, 255, 255, 0.7)',
+        '&$shrink': {
+          '&$focused': {
+            color: '#59aad1',
+          },
+        },
+      },
+    },
+  },
   palette: {
     type: 'dark',
     primary: {
