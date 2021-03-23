@@ -2,7 +2,7 @@
 /* eslint-disable react/jsx-key */
 /* eslint react/prop-types: 0 */
 import React from 'react';
-import imageUrl from './no-messages.png';
+import imageUrl from '../img/no-messages.png';
 import imageUrlStart from '../img/cherry-online-service.png';
 import { Link } from 'react-router-dom';
 import GitHubIcon from '@material-ui/icons/GitHub';
@@ -21,7 +21,6 @@ const useStyles = makeStyles((theme) => ({
     width: '100%',
     maxWidth: 360,
   },
-
   customLink: {
     color: theme.palette.text.main,
     textDecoration: 'none',
@@ -32,9 +31,8 @@ const useStyles = makeStyles((theme) => ({
     height: '180px',
   },
   mediaStart: {
-    marginTop: theme.spacing(6),
-    width: '180px',
-    height: '150px',
+    width: '270px',
+    height: '210px',
   },
 }));
 

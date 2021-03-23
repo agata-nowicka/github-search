@@ -62,7 +62,7 @@ function SearchBar() {
   const [searchedUser, setSearchedUser] = useState(null);
   const classes = useStyles();
   useEffect(() => {
-    // jak sie otwiera strona to pobiera usera z url i wyszukuje jego repozytoria
+    // get user URL and search for his/her repositoreis when the page load
     const params = new URLSearchParams(location.search);
     const userFromParams = params.get('query');
     if (userFromParams) {
@@ -75,7 +75,7 @@ function SearchBar() {
       const result = await axios(`https://api.github.com/users/${user}/repos`);
       setRepos(result.data);
       setSearchedUser(user);
-      // jak klikasz search to wpisuje tego usera do urla
+      // type user into URL on clicking
       history.push({ search: `?query=${user}` });
     } catch (error) {
       console.log(error);
