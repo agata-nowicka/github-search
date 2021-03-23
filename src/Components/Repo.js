@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
+import { useHistory } from 'react-router-dom';
 import axios from 'axios';
 import { useParams, Link } from 'react-router-dom';
 import {
@@ -67,7 +68,9 @@ const Repo = () => {
   const [avatar, setAvatar] = useState([]);
   const [repoUrl, setRepoUrl] = useState([]);
   const classes = useStyles();
-
+  const history = useHistory();
+  //useCallback zwróci zapamiętaną wersję funkcji, która zmieni się tylko wtedy, gdy zmieni się któraś z zależności, czyli historia w URL
+  const handleBack = useCallback(() => history.push(`/?query=${author}`), [history]);
   useEffect(async () => {
     try {
       const resultLang = await axios(`https://api.github.com/repos/${author}/${name}/languages`);
@@ -79,7 +82,6 @@ const Repo = () => {
       console.log(error);
     }
   }, []);
-
   return (
     <Container className={classes.center} component="main" maxWidth="m">
       <CssBaseline />
@@ -115,19 +117,11 @@ const Repo = () => {
         <CardMedia className={classes.media} image={avatar} title="avatar" />
       </Card>
       <div>
-        <Link
-          to={{
-            pathname: '/',
-          }}
-          className={classes.noLink}
-        >
-          <Button variant="contained" className={classes.button}>
-            Back
-          </Button>
-        </Link>
+        <Button variant="contained" className={classes.button} onClick={handleBack}>
+          Back
+        </Button>
       </div>
     </Container>
   );
 };
-
 export default Repo;

@@ -1,7 +1,7 @@
 /* eslint-disable react/jsx-no-undef */
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { Link } from 'react-router-dom';
+import { Link, useHistory, useLocation } from 'react-router-dom';
 import Results from './Results';
 import SearchIcon from '@material-ui/icons/Search';
 import {
@@ -13,7 +13,6 @@ import {
   makeStyles,
   Container,
 } from '@material-ui/core';
-
 const useStyles = makeStyles((theme) => ({
   heroButtons: {
     marginTop: theme.spacing(4),
@@ -53,56 +52,49 @@ const useStyles = makeStyles((theme) => ({
     width: '300px',
     backgroundColor: '#424242',
     color: theme.palette.buttons.action.selected,
-
-    '& label.Mui-focused': {
-      color: theme.palette.buttons.action.hover,
-    },
-    '& .MuiInput-underline:after': {
-      borderBottomColor: theme.palette.buttons.action.hover,
-    },
-    '& .MuiOutlinedInput-root': {
-      // '& fieldset': {
-      // borderColor: 'red',
-      // },
-      '&:hover fieldset': {
-        borderColor: theme.palette.buttons.action.selected,
-      },
-      '&.Mui-focused fieldset': {
-        borderColor: theme.palette.buttons.action.hover,
-      },
-    },
   },
 }));
-
 function SearchBar() {
+  const location = useLocation();
+  const history = useHistory();
   const [searchInput, setSearchInput] = useState('');
   const [repos, setRepos] = useState([]);
   const [searchedUser, setSearchedUser] = useState(null);
   const classes = useStyles();
-
-  const handleChange = (e) => {
-    setSearchInput(e.target.value);
-  };
-
-  const handleSearch = async (e) => {
-    e.preventDefault();
+  useEffect(() => {
+    // jak sie otwiera strona to pobiera usera z url i wyszukuje jego repozytoria
+    const params = new URLSearchParams(location.search);
+    const userFromParams = params.get('query');
+    if (userFromParams) {
+      setSearchInput(userFromParams);
+      searchUser(userFromParams);
+    }
+  }, []);
+  const searchUser = async (user) => {
     try {
-      const result = await axios(`https://api.github.com/users/${searchInput}/repos`);
+      const result = await axios(`https://api.github.com/users/${user}/repos`);
       setRepos(result.data);
-      setSearchedUser(searchInput);
+      setSearchedUser(user);
+      // jak klikasz search to wpisuje tego usera do urla
+      history.push({ search: `?query=${user}` });
     } catch (error) {
       console.log(error);
       setRepos([]);
       setSearchedUser('errorerror');
     }
   };
-
+  const handleChange = (e) => {
+    setSearchInput(e.target.value);
+  };
+  const handleSearch = (e) => {
+    e.preventDefault();
+    searchUser(searchInput);
+  };
   const handleClear = () => {
     setSearchInput('');
     setRepos([]);
     setSearchedUser(null);
   };
-
   return (
     <Container component="main" maxWidth="xs">
       <CssBaseline />
@@ -129,7 +121,6 @@ function SearchBar() {
               />
             </Grid>
           </Grid>
-
           <div className={classes.heroButtons}>
             <Grid container spacing={2} justify="center">
               <Grid item>
@@ -162,5 +153,4 @@ function SearchBar() {
     </Container>
   );
 }
-
 export default SearchBar;
