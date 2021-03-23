@@ -4,7 +4,7 @@ The project is still in progress
 
 An app which allows you to find a GitHub user.
 
-![Website screenshot](./src/screen.PNG)
+![Website screenshot](./src/img/screenshot.PNG)
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
@@ -69,4 +69,6 @@ You don’t have to ever use `eject`. The curated feature set is suitable for sm
 You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
 To learn React, check out the [React documentation](https://reactjs.org/).
+
+Icons from [icons8](https://dev.icons8.com/ouch/style/cherry)
 
