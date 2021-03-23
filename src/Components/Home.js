@@ -1,12 +1,12 @@
 import React from 'react';
 import SearchBar from './SearchBar';
+import { Grid } from '@material-ui/core';
 
 const Home = () => {
   return (
-    <div>
-      <h1> Search Bar </h1>
+    <Grid container direction="column" alignItems="center" justify="center">
       <SearchBar />
-    </div>
+    </Grid>
   );
 };
 
