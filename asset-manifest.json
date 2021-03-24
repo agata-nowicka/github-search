@@ -1,0 +1,28 @@
+{
+  "files": {
+    "main.css": "/github-search/static/css/main.106baaae.chunk.css",
+    "main.js": "/github-search/static/js/main.15b44bfc.chunk.js",
+    "main.js.map": "/github-search/static/js/main.15b44bfc.chunk.js.map",
+    "runtime-main.js": "/github-search/static/js/runtime-main.4efecc3c.js",
+    "runtime-main.js.map": "/github-search/static/js/runtime-main.4efecc3c.js.map",
+    "static/css/2.347ac444.chunk.css": "/github-search/static/css/2.347ac444.chunk.css",
+    "static/js/2.99ee46d8.chunk.js": "/github-search/static/js/2.99ee46d8.chunk.js",
+    "static/js/2.99ee46d8.chunk.js.map": "/github-search/static/js/2.99ee46d8.chunk.js.map",
+    "static/js/3.835bc149.chunk.js": "/github-search/static/js/3.835bc149.chunk.js",
+    "static/js/3.835bc149.chunk.js.map": "/github-search/static/js/3.835bc149.chunk.js.map",
+    "index.html": "/github-search/index.html",
+    "static/css/2.347ac444.chunk.css.map": "/github-search/static/css/2.347ac444.chunk.css.map",
+    "static/css/main.106baaae.chunk.css.map": "/github-search/static/css/main.106baaae.chunk.css.map",
+    "static/js/2.99ee46d8.chunk.js.LICENSE.txt": "/github-search/static/js/2.99ee46d8.chunk.js.LICENSE.txt",
+    "static/media/cherry-online-service.07215af7.png": "/github-search/static/media/cherry-online-service.07215af7.png",
+    "static/media/no-messages.ca44d631.png": "/github-search/static/media/no-messages.ca44d631.png",
+    "static/media/index.css": "/github-search/static/media/roboto-vietnamese-400-normal.52cebac0.woff2"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.4efecc3c.js",
+    "static/css/2.347ac444.chunk.css",
+    "static/js/2.99ee46d8.chunk.js",
+    "static/css/main.106baaae.chunk.css",
+    "static/js/main.15b44bfc.chunk.js"
+  ]
+}
