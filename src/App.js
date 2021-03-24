@@ -10,7 +10,7 @@ import theme from './styles/theme';
 function App() {
   return (
     <ThemeProvider theme={theme}>
-      <BrowserRouter basename={process.env.PUBLIC_URL}>
+      <BrowserRouter basename={window.location.pathname || ''}>
         <Switch>
           <Route exact path={PATHS.HOME} component={Home} />
           <Route path={PATHS.REPO} component={Repo} />
