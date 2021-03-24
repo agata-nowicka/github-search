@@ -107,14 +107,14 @@ function SearchBar() {
                 id="outlined-basic"
                 label="GitHub user name"
                 variant="outlined"
-                fullWidth="true"
+                fullWidth
                 type="text"
                 value={searchInput}
                 onChange={handleChange}
                 InputProps={{
                   endAdornment: (
                     <InputAdornment position="end">
-                      <SearchIcon color="main" />
+                      <SearchIcon />
                     </InputAdornment>
                   ),
                 }}
