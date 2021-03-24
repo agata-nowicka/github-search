@@ -14,6 +14,7 @@ import {
   ListItemText,
   Grid,
   CardMedia,
+  Box,
 } from '@material-ui/core';
 
 const useStyles = makeStyles((theme) => ({
@@ -26,7 +27,7 @@ const useStyles = makeStyles((theme) => ({
     textDecoration: 'none',
   },
   media: {
-    marginTop: theme.spacing(6),
+    marginTop: theme.spacing(1),
     width: '150px',
     height: '180px',
   },
@@ -68,21 +69,21 @@ const Results = (props) => {
     );
   } else if (user === 'errorerror') {
     listRepos = (
-      <div>
-        No such user
+      <Box display="flex" flexDirection="column" alignItems="center">
+        <span>No such user</span>
         <div className={classes.media}>
           <CardMedia className={classes.media} image={imageUrl} />
         </div>
-      </div>
+      </Box>
     );
   } else {
     listRepos = (
-      <div>
-        No repos
+      <Box display="flex" flexDirection="column" alignItems="center">
+        <span>No repos</span>
         <div className={classes.media}>
           <CardMedia className={classes.media} image={imageUrl} />
         </div>
-      </div>
+      </Box>
     );
   }
 
