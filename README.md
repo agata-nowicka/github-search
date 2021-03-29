@@ -63,6 +63,7 @@ You don’t have to ever use `eject`. The curated feature set is suitable for sm
 - React
 - CSS / Material UI
 - HTML5
+- GitHub REST API
 
 ## Additional info
 
