@@ -1,7 +1,5 @@
 # GitHub search engine
 
-The project is still in progress
-
 An app which allows you to find a GitHub user.
 
 [Website demo](https://agata-nowicka.github.io/github-search/)
@@ -16,7 +14,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 - Setup
 - Available scripts
 - Technologies
-- Learn more
+- Additional info
 
 ## General info
 
@@ -66,11 +64,7 @@ You don’t have to ever use `eject`. The curated feature set is suitable for sm
 - CSS / Material UI
 - HTML5
 
-## Learn More
+## Additional info
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-Icons from [icons8](https://dev.icons8.com/ouch/style/cherry)
+Icons from [icons8/cherry](https://dev.icons8.com/ouch/style/cherry)
 
