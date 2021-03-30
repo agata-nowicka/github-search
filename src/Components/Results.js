@@ -38,11 +38,20 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const Results = (props) => {
-  const { repos, user } = props;
+  const { repos, user, message } = props;
   const classes = useStyles();
   let listRepos = [];
 
-  if (repos.length !== 0) {
+  if (message == 'Not found') {
+    listRepos = (
+      <Box display="flex" flexDirection="column" alignItems="center">
+        <span>No such user</span>
+        <div className={classes.media}>
+          <CardMedia className={classes.media} image={imageUrl} />
+        </div>
+      </Box>
+    );
+  } else if (repos.length !== 0) {
     listRepos = repos.map((item) => (
       <Link
         className={classes.customLink}
@@ -66,15 +75,6 @@ const Results = (props) => {
       <div className={classes.mediaStart}>
         <CardMedia className={classes.mediaStart} image={imageUrlStart} />
       </div>
-    );
-  } else if (user === 'errorerror') {
-    listRepos = (
-      <Box display="flex" flexDirection="column" alignItems="center">
-        <span>No such user</span>
-        <div className={classes.media}>
-          <CardMedia className={classes.media} image={imageUrl} />
-        </div>
-      </Box>
     );
   } else {
     listRepos = (
