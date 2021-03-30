@@ -60,6 +60,8 @@ function SearchBar() {
   const [searchInput, setSearchInput] = useState('');
   const [repos, setRepos] = useState([]);
   const [searchedUser, setSearchedUser] = useState(null);
+  const [ifError, setIfError] = useState(false);
+  const [errorMessage, setErrorMessage] = useState('');
   const classes = useStyles();
   useEffect(() => {
     // get user URL and search for his/her repositoreis when the page load
@@ -72,21 +74,27 @@ function SearchBar() {
   }, []);
   const searchUser = async (user) => {
     try {
+      setIfError(false);
       const result = await axios(`https://api.github.com/users/${user}/repos`);
       setRepos(result.data);
       setSearchedUser(user);
       // type user into URL on clicking
       history.push({ search: `?query=${user}` });
     } catch (error) {
-      console.log(error);
-      setRepos([]);
-      setSearchedUser('errorerror');
+      console.log(error.message);
+      setIfError(true);
+      if ((error.message = 'Not found')) {
+        setErrorMessage('Not found');
+      } else {
+        setErrorMessage('Something went wrong');
+      }
     }
   };
   const handleChange = (e) => {
     setSearchInput(e.target.value);
   };
   const handleSearch = (e) => {
+    setErrorMessage(' ');
     e.preventDefault();
     searchUser(searchInput);
   };
@@ -94,6 +102,7 @@ function SearchBar() {
     setSearchInput('');
     setRepos([]);
     setSearchedUser(null);
+    setErrorMessage(' ');
   };
   return (
     <Container component="main" maxWidth="xs">
@@ -149,7 +158,7 @@ function SearchBar() {
           </div>
         </form>
       </div>
-      <Results repos={repos} user={searchedUser} />
+      <Results repos={repos} user={searchedUser} message={errorMessage} />
     </Container>
   );
 }
